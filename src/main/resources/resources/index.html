@@ -1,0 +1,71 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body >
+<h1> Hello ! my name is Tracy-MacGrady!</h1>
+<table class="table table-striped" style="border:1px solid #dcdcdc;">
+    <thead>
+    <tr style="border:1px solid #dcdcdc;">
+        <td class="active">id</td>
+        <td class="success">createBy</td>
+        <td class="warning">createDate</td>
+        <td class="danger">updateBy</td>
+        <td class="info">updateDate</td>
+        <td class="info">remark</td>
+        <td class="info">sort</td>
+        <td class="info">delFlag</td>
+        <td class="info">planningExpert</td>
+    </tr>
+    </thead>
+    <tbody id="testBody">
+
+    </tbody>
+</table>
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script language="javascript">  
+
+
+$(function ()
+{
+	 $.ajax(  
+    {  
+        url:"test/testList",  
+        type:"get",  
+        dataType:"json",  
+        success:function(data)  
+        {  
+        	
+        	$(data).each(function (idx)
+     		{
+     		     var htmlCode = 
+     		    	 
+     		    	 " <tr  >"+
+     	       " <td >"+this.id+"</td>"+
+     	       " <td >"+this.createBy+"</td>"+
+     	       " <td> "+this.createDate+"</td>"+
+     	       " <td >"+this.updateBy+"</td>"+
+     	       " <td >"+this.updateDate+"</td>"+
+     	       "  <td>"+this.remark+"</td>"+
+     	       " <td >"+this.sort+"</td>"+
+     	      "  <td >"+this.delFlag+"</td>"+
+     	       " <td >"+this.planningExpert+"</td>"+
+     	   " </tr >" ;
+     		    $("#testBody").append(htmlCode);
+     		});
+        },  
+        error: function() {  
+            alert("error");  
+          }  
+    });   
+});
+
+
+
+
+</script>  
+
+
